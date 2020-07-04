@@ -217,6 +217,8 @@ navigator.getUserMedia(
     stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
   },
   error => {
-    console.warn(error.message);
+    alert("You can't go further, please allow camera to go further")
+    window.location.replace("/cameraerror")
   }
 );
+
