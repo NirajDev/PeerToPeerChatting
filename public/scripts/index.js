@@ -20,16 +20,27 @@ const { RTCPeerConnection, RTCSessionDescription } = window;
 
 const peerConnection = new RTCPeerConnection(peerConnectionConfig);
 
-let $username = document.querySelector('.txt_username');
+let $loginBtn = document.querySelector('#sign-in-button');
+let $username = document.querySelector('#txt_username');
 let $contentContainer = document.querySelector('.content-container');
+let $loginform = document.querySelector('.loginpage');
 
+$loginBtn.addEventListener('click', (event) => {
+  setUserName($username.value);
+  localStorage.setItem("username", $username.value);
+  $loginform.style.display = "none";
+});
 
-$username.addEventListener('keydown', (event) => {
-  // console.log(event);
-  if (event.keyCode === 13) {
-    setUserName($username.value)
+jQuery(function ($) {
+  if (window.location.pathname == '/') {
+      let $loginform = document.querySelector('.loginpage');
+      if(localStorage.getItem('username')){
+          $loginform.style.display = "none";
+          setUserName(localStorage.getItem('username'));
+      };
   }
 });
+
 
 function setUserName(username) {
   console.log('user - ', username)
@@ -207,7 +218,7 @@ peerConnection.ontrack = function ({ streams: [stream] }) {
 };
 
 navigator.getUserMedia(
-  { video: true, audio: true },
+  {video: {width: {exact: 640}, height: {exact: 480}}},
   stream => {
     const localVideo = document.getElementById("local-video");
     if (localVideo) {
@@ -217,6 +228,10 @@ navigator.getUserMedia(
     stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
   },
   error => {
-    console.warn(error.message);
+    alert("You can't go further, please allow camera to go further")
+    window.location.replace("error")
   }
 );
+
+
+
