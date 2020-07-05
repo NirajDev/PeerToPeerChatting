@@ -40,6 +40,7 @@ body {
 .logo-text {
     font-size: 26px;
     font-weight: 700;
+    margin-left: 13px;
 }
 
 .logo-highlight {
@@ -56,6 +57,12 @@ body {
 }
 
 #menu-toggle {
+    display: none;
+    background-color: #70afe7;
+    border-color: #bfcad6;
+}
+
+#validation-fail {
     display: none;
 }
 

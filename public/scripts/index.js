@@ -27,15 +27,30 @@ let $contentContainer = document.querySelector('.content-container');
 let $sidebarWrapper = document.querySelector('#sidebar-wrapper');
 let $menuToggle = document.querySelector('#menu-toggle');
 let $videoContainer = document.querySelector('.video-container');
-
-
 let $loginform = document.querySelector('.loginpage');
 
+$username.addEventListener('keydown', () => {
+    $('#validation-fail').fadeOut();
+});
+
 $loginBtn.addEventListener('click', (event) => {
+    if (!validateUsername($username.value)) {
+        return;
+    }
+
     setUserName($username.value);
     localStorage.setItem("username", $username.value);
     $loginform.style.display = "none";
 });
+
+function validateUsername(userName) {
+    let rtnVal = true;
+    if (!userName || userName.length < 3) {
+        $('#validation-fail').fadeIn();
+        rtnVal = false;
+    }
+    return rtnVal;
+}
 
 jQuery(function($) {
     if (window.location.pathname == '/') {

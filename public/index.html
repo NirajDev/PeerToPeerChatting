@@ -36,7 +36,7 @@
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <button class="btn btn-primary" id="menu-toggle">
-                    Toggle
+                    Toggle Users
                 </button>
 
                 <h1 class="logo-text">
@@ -50,6 +50,13 @@
                     <div class="form-group">
                         <label for="txt_username" class="color-blue">Enter name</label>
                         <input placeholder="Enter your name" class="form-control" type="text" autocomplete="off" name="txt_username" id="txt_username" required autofocus>
+                        <br>
+                        <div id="validation-fail" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Your name should contain atleast 3 characters.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
                     </div>
                     <button class="btn btn-signin" id="sign-in-button" type="submit">Submit</button>
                 </div>
