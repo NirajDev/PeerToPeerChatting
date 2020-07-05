@@ -131,3 +131,11 @@ body {
 .username{
   display: inline-block;
 }
+
+.loginform
+{
+  display: none;
+  position: fixed;
+  bottom: 0;
+  margin-right: 0;
+}

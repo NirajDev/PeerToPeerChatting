@@ -5,10 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Raj App</title>
+  <title>Live Chat</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -16,15 +20,29 @@
     <header class="header">
       <div class="logo-container">
         <!-- <img src="./img/doge.png" alt="logo" class="logo-img" /> -->
-        <h1 class="logo-text">
-          Chat App <span class="logo-highlight">Raj</span>
+        <button class="w3-button" onclick="openLeftMenu()">&#9776;</button>  <h1 class="logo-text">
+          Live <span class="logo-highlight">Chat</span>
         </h1>
-        <input type="text" class="txt_username">
       </div>
     </header>
+    
+    <div class="loginpage" style="padding: 15px;box-shadow: 1px 1px 5px #9bc5b7, -1px -1px 5px #9bc5b7;max-width: 500px;margin: auto;">
+      <h3 style="color:#00a76d;"> Sign In</h3>
+      <div class="form-group">
+          <label for="txt_username" style="color:#00a76d;">Enter name</label>
+          <input placeholder="Enter your name" class="form-control" type="text" autocomplete="off" name="txt_username" id="txt_username" required>
+      </div>
+      <button style="background-color:#00a76d !important; border-color: #00a76d; position: relative; left: 40%;" id="sign-in-button"
+          type="submit" class="btn btn-primary">Submit</button>
+  </div>
+      
     <div class="content-container">
+      
+      <div class="w3-sidebar" style="display:none" id="leftMenu">
+        <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
       <div class="active-users-panel" id="active-user-container">
         <h3 class="panel-title">Online Users:</h3>
+      </div>
       </div>
       <div class="video-chat-container">
         <h2 class="talk-info" id="talking-with-info">
@@ -38,6 +56,8 @@
     </div>
   </div>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/layout.js"></script>
+
 </body>
 
 </html>

@@ -11,7 +11,7 @@ const user_1 = require("./model/user");
 class Server {
     constructor() {
         this.activeSockets = [];
-        this.DEFAULT_PORT = process.env.PORT || 1000;
+        this.DEFAULT_PORT = process.env.PORT || 2000;
         this.initialize();
     }
     initialize() {
@@ -28,6 +28,9 @@ class Server {
     configureRoutes() {
         this.app.get("/", (req, res) => {
             res.sendFile("index.html");
+        });
+        this.app.get("/error", (req, res) => {
+            res.sendFile("error.html", { root: 'public'});
         });
     }
     handleSocketConnection() {

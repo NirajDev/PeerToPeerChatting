@@ -11,7 +11,7 @@ export class Server {
 
   private activeSockets: User[] = [];
 
-  private readonly DEFAULT_PORT = process.env.PORT || 1000;
+  private readonly DEFAULT_PORT = process.env.PORT || 2000;
 
   constructor() {
     this.initialize();
@@ -35,6 +35,10 @@ export class Server {
     this.app.get("/", (req, res) => {
       res.sendFile("index.html");
     });
+    this.app.get("/error", (req, res) => {
+      res.sendFile("error.html");
+    });
+  
   }
 
   private handleSocketConnection(): void {
